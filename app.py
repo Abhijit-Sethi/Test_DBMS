@@ -213,17 +213,55 @@ if page_choice == pages_menu[7]:
         start_tm,end_tm = timing.split(" - ")
     Room = st.text_input("Room","")
     Subject = st.text_input("Subject","")
+    if(Subject != ""):
+        st.write (
+            f"""
+            * Semester : {sem}
+            * Section : {section}
+            * Day : {day}
+            * Start Time : {start_tm}
+            * End Time : {end_tm}
+            * Room : {Room}
+            * Subject Code : {subject}
+            """
+            )
+
+    if st.button("Submit"):
+        # Query to add data
+        pass
 
 if page_choice == pages_menu[8]:
     time_slots = ["8:15 - 9:15", "9:15 - 10:15","10:45 - 11:45","11:45 - 12:45","1:30 - 2:30","3:30 - 3:45","3:45 - 4:45",'Other...']
     st.subheader("Faculty Duties")
     Initials = st.selectbox("Initials",fetch_initials())
     Duty_type = st.selectbox("Duty type",fetch_duty_type())
-    Duty_duration = st.selectbox("Duration",time_slots)
-    Duty_venue = st.text_input("Venue","")
-    
     Duty_date = st.text_input("Date","")
     Duty_reporting_time = st.text_input("Reporting Time","")
+    Duty_duration = st.selectbox("Duration",time_slots)
+    Duty_venue = st.text_input("Venue","")
+
+    if Duty_duration == 'Other...':
+        start_tm = st.text_input("Starting time")
+        end_tm = st.text_input("Ending time")
+    else:
+        start_tm,end_tm = Duty_duration.split(" - ")
+
+    if Duty_venue!="":
+        st.write (
+            f"""
+            * Initials : {Initials}
+            * Duty Type : {Duty_type}
+            * Date : {Duty_date}
+            * Reporting Time : {Duty_reporting_time}
+            * Start Time : {start_tm}
+            * End Time : {end_tm}
+            * Venue : {Duty_venue}
+            """
+        )
+    if st.button("Submit"):
+        # Query to add data
+        pass
+
 if page_choice == pages_menu[9]:
     st.balloons()
     st.write("# Made with :heartbeat:")
