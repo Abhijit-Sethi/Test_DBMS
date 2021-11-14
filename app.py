@@ -7,8 +7,8 @@ from datetime import date
 # Initialize connection.
 @st.experimental_singleton
 def init_connection():
-    return psycopg2.connect(dbname = st.secrets["postgres"].name,user = st.secrets["postgres"].user,password = st.secrets["postgres"].password,host = st.secrets["postgres"].host,port = st.secrets["postgres"].port)
-    # return psycopg2.connect(dbname="timetable",user="postgres",password="postgres",host="localhost",port=5432)
+    # return psycopg2.connect(dbname = st.secrets["postgres"].name,user = st.secrets["postgres"].user,password = st.secrets["postgres"].password,host = st.secrets["postgres"].host,port = st.secrets["postgres"].port)
+    return psycopg2.connect(dbname="timetable",user="postgres",password="postgres",host="localhost",port=5432)
     #return psycopg2.connect(**st.secrets["postgres"])
 
 conn = init_connection()
@@ -46,8 +46,8 @@ page_choice = st.sidebar.selectbox("Menu",pages_menu)
 if page_choice == pages_menu[0]:
     st.subheader("Home")
     st.subheader('Faculty Duties and Workload management')
-    for i in st.secrets["postgres"]:
-        st.write(st.secrets["postgres"].user)
+    # for i in st.secrets["postgres"]:
+    #     st.write(st.secrets["postgres"].user)
 
 if page_choice == pages_menu[1]:
     st.subheader("Add Subjects")
