@@ -7,7 +7,7 @@ from datetime import date
 # Initialize connection.
 @st.cache(allow_output_mutation=True, hash_funcs={"_thread.RLock": lambda _: None})
 def init_connection():
-    return psycopg2.connect(**st.secrets["postgres"])
+    return psycopg2.connect(**st.secrets.postgres)
     # return psycopg2.connect(dbname="timetable",user="postgres",password="postgres",host="localhost",port=5432)
     #return psycopg2.connect(**st.secrets["postgres"])
 
